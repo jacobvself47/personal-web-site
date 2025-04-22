@@ -8,30 +8,44 @@ type Threat = {
   Mitigation: string;
 };
 
+type AssetThreats = {
+  [assetName: string]: {
+    Threats?: Threat[];
+  };
+};
+
+type AssetLayer = {
+  [layerName: string]: AssetThreats;
+};
+
+type ThreatModel = {
+  Assets: AssetLayer;
+};
+
 export default function Home() {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<ThreatModel | null>(null);
 
   useEffect(() => {
     fetch("/Asset_Threat_Control.json")
       .then((res) => res.json())
-      .then((json) => setData(json));
+      .then((json: ThreatModel) => setData(json));
   }, []);
 
-  if (!data) return <p className="p-4">Loading threat model!...</p>;
+  if (!data) return <p className="p-4">Loading threat model...</p>;
 
   return (
     <main className="p-6 max-w-5xl mx-auto space-y-8">
       <h1 className="text-4xl font-bold text-center">Threat Model Viewer</h1>
-      {Object.entries(data.Assets).map(([layer, assets]: any) => (
+      {Object.entries(data.Assets).map(([layer, assets]) => (
         <section key={layer}>
           <h2 className="text-2xl font-semibold mb-4 border-b pb-2">{layer}</h2>
-          {Object.entries(assets).map(([asset, { Threats }]: any) => (
+          {Object.entries(assets).map(([asset, details]) => (
             <div key={asset} className="mb-6 p-4 border rounded-lg shadow bg-white">
               <h3 className="text-xl font-bold mb-3 text-blue-700">{asset}</h3>
-              {Threats?.length > 0 ? (
+              {details.Threats && details.Threats.length > 0 ? (
                 <ul className="space-y-3">
-                  {Threats.map((threat: Threat, idx: number) => (
-                    <li key={idx} className="text-gray-600 p-3 rounded-md shadow-sm">
+                  {details.Threats.map((threat, idx) => (
+                    <li key={idx} className="bg-gray-50 p-3 rounded-md shadow-sm">
                       <p className="font-semibold text-lg">{threat.Name}</p>
                       {threat.Definition && (
                         <p className="text-sm text-gray-600 mb-1">
