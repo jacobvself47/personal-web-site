@@ -1,0 +1,198 @@
+{
+    "Assets": {
+      "Model": {
+        "Model Weights": {
+          "Threats": [
+            {
+              "Name": "Model Inversion",
+              "Definition": "Attacker reconstruct the model's parametrs or architecture by probing the models output",
+              "Mitigation_1": "Reactive: input sanitization to remove any adversarial pertubations",
+              "Mitigation_2": "Proactive: train model on adversarial examples to improve robustness",
+              "Mitigation_3": "Implement strong access controls to limit access to sensitive data used in the model"
+            },
+            {
+              "Name": "Insecure Access",
+              "Definition": "Poorly secured storage or access controls allow unauthroized retrieval of model weights",
+              "Mitigation": "Encrypt data; enforce strict IAM; audit logs."
+            },
+            {
+              "Name": "Insecure Pipeline",
+              "Definition": "Vulnerabilities in the build or deployment pipeline could allow for tampering or leakage of weights",
+              "Mitigation": "Use code signing, reproducible builds, and secure CI/CD."
+            }
+          ]
+        },
+        "Training Data": {
+          "Threats": [
+            {
+              "Name": "Split-View Data Poisoning",
+              "Definition": "Different version of data is presented to different systems or users - when a scraper is detected, serve poisoned data",
+              "Mitigation_1": "Use authenticated data sources; validate data provenance.",
+              "Mitigation_2": "Implemet hashing for indexed context - ensure that model creators get the same data as when the dataset maintainers indexed and hashed them",
+              "Mitigation_3": "Rotate scraper signatures"
+            },
+            {
+              "Name": "Frontrunning Data Poisoning",
+              "Definition": "providing malicious or biased data to the training set before an authorative source is provided",
+              "Mitigation_1": "Use authenticated data sources; validate data provenance.",
+              "Mitigation_2": "Introduce randomization int he scheduling of snapshots."
+
+            },
+            {
+              "Name": "Using Inadequate or Unauthorized Data",
+              "Definition": "training on low-quality, biased, or private datasets without proper vetting or permissions",
+              "Mitigation": "Vet datasets and verify licenses."
+            },
+            {
+              "Name": "Model Source Tampering",
+              "Definition": "malicious actors modify the data sources or inject fake content into scraped data sets",
+              "Mitigation_1": "Use authenticated data sources; validate data provenance.",
+              "Mitigation_2": "Poison detection to identify anomolies to identify outliers"
+
+            },
+            {
+              "Name": "Model Weight Tampering",
+              "Definition": "Altering pre-trained model file or artifacts with hidden behaviors or vulnerabilities",
+              "Mitigation": "Vet datasets and verify licenses",
+              "Mitigation_2": "Implement strong access controls to limit access to model weights"
+
+            }
+          ]
+        },
+        "Embedding Vectors": {
+          "Threats": [
+            {
+              "Name": "Vector Embedding Weakness",
+              "Definition": "Embeddings may leak sensitive data or expose relationships that can be exploited",
+              "Mitigation": "Apply noise; limit embedding exposure."
+            },
+            {
+              "Name": "Inversion attack on embeddings",
+              "Definition": "Attackers reverse-engineer input content or private information from vector outputs",
+              "Mitigation": "Encrypt vector embeddings"
+            }
+          ]
+        }
+      },
+      "Infrastructure": {
+        "API Keys and Tokens": {
+          "Threats": [
+            {
+              "Name": "Sensitive Data Exposure",
+              "Definition": "Leaked or mismanaged credentials can allow unauthorized access to internal systems",
+              "Mitigation": "Use secrets managers; enforce least privilege; scrub sensitive output."
+            }
+          ]
+        },
+        "Compute Resources": {
+          "Threats": [
+            {
+              "Name": "Insecure Supply Chain",
+              "Definition": "vulnerable dependencies can introduce backdoors",
+              "Mitigation": "Use dependency scanners; restrict builds to known-good sources."
+            },
+            {
+              "Name": "Insecure Access",
+              "Definition": "lead to unauthorized user access to critical systems",
+              "Mitigation": "Encrypt data; enforce strict IAM; audit logs."
+            }
+          ]
+        },
+        "Deployment Pipelines": {
+          "Threats": [
+            {
+              "Name": "Insecure Supply Chain",
+              "Definition": "vulnerable dependencies can introduce backdoors",
+              "Mitigation": "Use dependency scanners; restrict builds to known-good sources."
+            },
+            {
+              "Name": "Insecure Access",
+              "Definition": "Lead to unauthorized user access to critical systems",
+              "Mitigation": "Encrypt data; enforce strict IAM; audit logs."
+            }
+          ]
+        },
+        "Inference Platform": {
+          "Threats": [
+            {
+                "Name": "side-channel timing attacks",
+                "Definition": "analysis of the time to make an inference can reveal information about the model's layers or parameters",
+                "Mitigation": "Utilize random lenth noise in the token responses to obscure the length of the token"
+            },
+            {
+                "Name": "denial of service",
+                "Definition": "overload the inference service with high-volume or malicious inputs, leading to degraded availability",
+                "Mitigation_1": "Rate Limiting and throttling",
+                "Mitigation_2": "Logging and monitoring for malicious use"
+            }
+          ]
+        },
+        "LoRA Adapter": {
+            "Threats": [
+                {
+                    "Name": "LoRA Injection",
+                    "Definition": "Malicious LoRA weights to manipulate model behavior post-deployment",
+                    "Mitigation": "Change management for introducing LoRA adapters"
+                }
+            ]
+        }
+      },
+      "Application": {
+        "End-User Applications": {
+          "Threats": [
+            {
+              "Name": "Prompt Injection via Jailbreak",
+              "Definition": "carefully creafted prompts bypass constraints to trigger unauthorized behaviors",
+              "Mitigation": "Sanitize inputs; restrict prompt scope; use retrieval augmentation."
+            },
+            {
+              "Name": "Indirect Prompt Injection",
+              "Definition": "Model reads adversarial content that manipulates outputs without direct interaction",
+              "Mitigation": "Validate content sources; avoid echoing untrusted inputs."
+            }
+          ]
+        },
+        "End-User APIs": {
+          "Threats": [
+            {
+              "Name": "Insecure Access",
+              "Definition": "poor authentication, rate-limiting, input validation allow for misuse or exploitation",
+              "Mitigation": "Encrypt data; enforce strict IAM; audit logs."
+            },
+            {
+              "Name": "Sensitive Data Exposure",
+              "Definition": "poor input/output handling leads to sensitive data exposure",
+              "Mitigation": "Use secrets managers; enforce least privilege; scrub sensitive output."
+            },
+            {
+              "Name": "Prompt Injection via Jailbreak",
+              "Definition": "carefully creafted prompts bypass constraints to trigger unauthorized behaviors",
+              "Mitigation": "Sanitize inputs; restrict prompt scope; use retrieval augmentation."
+            },
+            {
+              "Name": "Indirect Prompt Injection",
+              "Definition": "Model reads adversarial content that manipulates outputs without direct interaction",
+              "Mitigation": "Validate content sources; avoid echoing untrusted inputs."
+            }
+          ]
+        },
+        "User Feedback Data": {
+          "Threats": [
+            {
+              "Name": "Training on Personal Data",
+              "Definition": "Feedback loops may include personal information, leading to privacy violations if reused in training",
+              "Mitigation_1": "Differential privacy - obscure user provided data points",
+              "Mitigation_2": "Federadted Learning - local model sends updates to global mode - raw data is not set only gradients and weights",
+              "Mitigation_3": "Utilize homomorphic encryption to allow computation on encrypted data w/o decryption",
+              "Mitigation_4": "Utilize sensitive personsal data filters to enable tokenzation or encryption"
+            },
+            {
+              "Name": "Feedback poisioning",
+              "Definition": "malicious feedback is submitted to influence model updates, behavior, or fine-tuning",
+              "Mitigation_1": "Implement access controls to ensure feedback comes from authenticated, trusted users"
+            }
+          ]
+        }
+      }
+    }
+  }
