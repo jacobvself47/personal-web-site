@@ -45,7 +45,7 @@ export default function Home() {
               {details.Threats && details.Threats.length > 0 ? (
                 <ul className="space-y-3">
                   {details.Threats.map((threat, idx) => (
-                    <li key={idx} className="bg-gray-50 p-3 rounded-md shadow-sm">
+                    <li key={idx} className="text-gray-600 mb-1 p-3 rounded-md shadow-sm">
                       <p className="font-semibold text-lg">{threat.Name}</p>
                       {threat.Definition && (
                         <p className="text-sm text-gray-600 mb-1">
