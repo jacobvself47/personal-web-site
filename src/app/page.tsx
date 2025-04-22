@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 type Threat = {
   Name: string;
   Definition?: string;
-  Mitigation: string;
+  Mitigation: string | string[];
 };
 
 type AssetThreats = {
@@ -45,16 +45,27 @@ export default function Home() {
               {details.Threats && details.Threats.length > 0 ? (
                 <ul className="space-y-3">
                   {details.Threats.map((threat, idx) => (
-                    <li key={idx} className="text-gray-600 mb-1 p-3 rounded-md shadow-sm">
+                    <li key={idx} className="text-gray-600 rounded-md shadow-sm">
                       <p className="font-semibold text-lg">{threat.Name}</p>
                       {threat.Definition && (
                         <p className="text-sm text-gray-600 mb-1">
                           <strong>Definition:</strong> {threat.Definition}
                         </p>
                       )}
-                      <p className="text-sm text-green-700">
-                        <strong>Mitigation:</strong> {threat.Mitigation}
-                      </p>
+                      {Array.isArray(threat.Mitigation) ? (
+                        <>
+                        <p className="text-sm text-green-700 font-semibold">Mitigation:</p>
+                          <ul className="list-disc ml-5 text-sm text-green-700">
+                            {threat.Mitigation.map((m, i) => (
+                              <li key={i}>{m}</li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <p className="text-sm text-green-700">
+                          <strong>Mitigation:</strong> {threat.Mitigation}
+                        </p>
+                      )}
                     </li>
                   ))}
                 </ul>
