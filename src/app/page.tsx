@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { getAllPosts } from "@/lib/blog";
+import BlogPost from "@/components/BlogPost";
 
 const featuredProjects = [
   {
@@ -11,6 +13,8 @@ const featuredProjects = [
 ];
 
 export default function Home() {
+  const latestPosts = getAllPosts().slice(0, 3);
+
   return (
     <div className="max-w-5xl mx-auto px-6 py-12">
       {/* Hero Section */}
@@ -104,7 +108,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Latest Posts Placeholder */}
+      {/* Latest Posts */}
       <section>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
@@ -117,10 +121,24 @@ export default function Home() {
             View all &rarr;
           </Link>
         </div>
-        <p className="text-neutral-500 dark:text-neutral-500 italic">
-          Blog posts coming soon. Check back for updates on my security
-          engineering journey.
-        </p>
+        {latestPosts.length > 0 ? (
+          <div className="space-y-2">
+            {latestPosts.map((post) => (
+              <BlogPost
+                key={post.slug}
+                slug={post.slug}
+                title={post.title}
+                date={post.date}
+                description={post.description}
+                tags={post.tags}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="text-neutral-500 dark:text-neutral-500 italic">
+            Blog posts coming soon.
+          </p>
+        )}
       </section>
     </div>
   );
