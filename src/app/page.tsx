@@ -24,8 +24,7 @@ export default function Home() {
         </h1>
         <p className="text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mb-6">
           I focus on what controls AI service providers need, not just building
-          AI-powered security tools. Currently building in public and sharing
-          the journey.
+          AI-powered security tools.
         </p>
         <div className="flex flex-wrap gap-4">
           <Link
@@ -35,7 +34,7 @@ export default function Home() {
             View Projects
           </Link>
           <Link
-            href="https://linkedin.com/in/jacobvself"
+            href="https://linkedin.com/in/jacobself"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-4 py-2 border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
@@ -93,7 +92,7 @@ export default function Home() {
         </h2>
         <div className="prose text-neutral-600 dark:text-neutral-400">
           <p>
-            I&apos;m Jake, a security and GRC engineer focused on AI systems. My
+            I&apos;m Jake, a security and GRC professional currently focused on AI systems. My
             work centers on understanding what controls AI service providers
             need to operate securely and maintain compliance.
           </p>
