@@ -9,6 +9,14 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    title: "RBAC Security Report",
+    description:
+      "AI-enhanced Kubernetes RBAC security assessment with detailed findings, attack scenarios, and remediation steps. Demonstrates SecureAudit AI capabilities.",
+    href: "/projects/security-report",
+    tags: ["Kubernetes", "RBAC", "AI", "Security Assessment"],
+    status: "Live",
+  },
+  {
     title: "Threat Model Viewer",
     description:
       "Interactive visualization tool for exploring threat models with assets, threats, and mitigations organized by layer. Built to help security teams understand and communicate threat landscapes.",
