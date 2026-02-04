@@ -38,6 +38,12 @@ export default function Home() {
             View Projects
           </Link>
           <Link
+            href="/blog"
+            className="inline-flex items-center px-4 py-2 bg-neutral-900 dark:bg-neutral-100 text-neutral-100 dark:text-neutral-900 rounded-lg hover:bg-neutral-700 dark:hover:bg-neutral-300 transition-colors"
+          >
+            Read Blog
+          </Link>
+          <Link
             href="https://linkedin.com/in/jacobself"
             target="_blank"
             rel="noopener noreferrer"

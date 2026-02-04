@@ -142,3 +142,35 @@ body {
   border-radius: 0.5em;
   margin: 1em 0;
 }
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 0.875em;
+}
+
+.prose thead {
+  background: var(--card-bg);
+}
+
+.prose th {
+  padding: 0.75em 1em;
+  text-align: left;
+  font-weight: 600;
+  border: 1px solid var(--card-border);
+}
+
+.prose td {
+  padding: 0.75em 1em;
+  border: 1px solid var(--card-border);
+  vertical-align: top;
+}
+
+.prose tr:nth-child(even) {
+  background: var(--card-bg);
+}
+
+.prose tbody tr:hover {
+  background: var(--card-border);
+}

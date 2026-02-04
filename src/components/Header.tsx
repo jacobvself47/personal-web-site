@@ -21,7 +21,7 @@ export default function Header() {
             href="/"
             className="text-xl font-bold text-neutral-900 dark:text-neutral-100 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
           >
-            Jake
+            Jake Self
           </Link>
 
           {/* Desktop navigation */}
