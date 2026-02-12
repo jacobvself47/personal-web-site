@@ -1,5 +1,5 @@
 ---
-title: "SecureAudit-AI Development Risk Assessment"
+title: "Risk Mitigations"
 date: "2025-02-11"
 description: "Documenting risk mitigations implemented to securely use agentic AI coding systems"
 tags: ["ai-security", "risk-assessment", "grc", "building-in-public"]
