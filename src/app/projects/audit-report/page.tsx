@@ -526,7 +526,7 @@ export default function AuditReport() {
             </div>
             <div className="text-neutral-500 text-xs space-y-1">
               <div>Access: <span className="text-neutral-400 font-mono">admin — namespace: rbac-test-env</span></div>
-              <div>Account type: <span className="text-neutral-400">Not found in directory — external domain, not the organisation's tenant</span></div>
+              <div>Account type: <span className="text-neutral-400">Not found in directory — external domain, not the organisation&apos;s tenant</span></div>
               <div className="text-neutral-600 pt-1">Cannot be attributed to a known identity. Should be treated as a stale or rogue binding. See Issue 5.</div>
             </div>
           </div>
