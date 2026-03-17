@@ -9,6 +9,14 @@ export const metadata: Metadata = {
 
 const projects = [
   {
+    title: "Kubernetes RBAC Audit Report",
+    description:
+      "Full access review of a production AKS cluster: 107 RBAC grants resolved against Entra ID, 46 findings including a tampered built-in ClusterRole, broken CI/CD identity chains, and an external-domain user with namespace admin.",
+    href: "/projects/audit-report",
+    tags: ["Kubernetes", "RBAC", "Access Review", "AKS", "Entra ID"],
+    status: "Live",
+  },
+  {
     title: "RBAC Security Report",
     description:
       "AI-enhanced Kubernetes RBAC security assessment with detailed findings, attack scenarios, and remediation steps. Demonstrates SecureAudit AI capabilities.",
